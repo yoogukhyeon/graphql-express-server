@@ -1,5 +1,9 @@
-import user from '../../models/user.js';
+import user from '../../models/user';
 
+interface Argument {
+	userId: string;
+	userName: string;
+}
 const resolvers = {
 	Query: {
 		users: async () => {
@@ -9,9 +13,9 @@ const resolvers = {
 	},
 
 	Mutation: {
-		addUser: async (_, { userId, userName }) => {
+		addUser: async (_: any, { userId, userName }: Argument) => {
 			const result = await user.insert(userId, userName);
-			return result ? result : false;
+			return result ? true : false;
 		},
 	},
 };

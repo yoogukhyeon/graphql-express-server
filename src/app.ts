@@ -1,10 +1,9 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { bodyParserGraphQL } from 'body-parser-graphql';
 import compression from 'compression';
-import conn from './config/pool.js';
-import typeDefs from './graphql/schema/schema.js';
-import resolvers from './graphql/resolvers/resolvers.js';
+import typeDefs from './graphql/schema/schema';
+import resolvers from './graphql/resolvers/resolvers';
 
 const app = express();
 
@@ -17,14 +16,21 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	introspection: true, // 스키마 검사 활성화 default: true
-	playground: true, // playgorund 활성화 default: true
 });
 
-await server.start();
+const serverStart = async () => {
+	await server.start();
+	server.applyMiddleware({
+		app,
+		path: '/graphql',
+	});
+};
+serverStart();
+
 // ApolloServer 미들웨어 셋팅
-server.applyMiddleware({
-	app,
-	path: '/graphql',
+
+app.get('/', (req: Request, res: Response) => {
+	res.send('Hello World!');
 });
 
 const port = 5000 || process.env.PORT;

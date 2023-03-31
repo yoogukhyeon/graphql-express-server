@@ -1,6 +1,6 @@
 import mysql from 'promise-mysql';
 
-const dbConfig = {
+const dbConfig: any = {
 	host: 'localhost',
 	port: '3306',
 	user: 'root',
