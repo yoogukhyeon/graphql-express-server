@@ -2,8 +2,14 @@
 
 # GraphQL
 
--   Stack - Expess, GraphQL, Apollo-Server, Mysql
-    <br />
+-   Stack - Expess, Typescript, GraphQL, Apollo-Server, Mysql
+
+-   Vercel Serverless 배포
+
+    -   vercel.json 서버리스 환경셋팅
+    -   pre-commit Vercel 서버에 컴파일된 js소스를 전송해서 빌드하고 프로젝트 빌드
+
+        <br />
 
 #### Node.js Express에 GraphQL과 API 구축해서 활용하기 위해서 구축
 
