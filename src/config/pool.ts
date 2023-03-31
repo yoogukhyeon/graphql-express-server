@@ -15,6 +15,7 @@ const pool = {
 		let connection: any;
 		try {
 			connection = await pool.getConnection();
+			console.log('db is connected');
 			result = value ? await connection.query(query, value) : (await connection.query(query)) || null;
 		} catch (err) {
 			console.log(err);
