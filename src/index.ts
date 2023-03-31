@@ -4,9 +4,18 @@ import { bodyParserGraphQL } from 'body-parser-graphql';
 import compression from 'compression';
 import typeDefs from './graphql/schema/schema';
 import resolvers from './graphql/resolvers/resolvers';
+import morgan from 'morgan';
+import helmet from 'helmet';
 import 'dotenv/config';
 
 const app = express();
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(morgan('combined'));
+	app.use(helmet());
+} else {
+	app.use(morgan('dev'));
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +38,6 @@ const serverStart = async () => {
 serverStart();
 
 // ApolloServer 미들웨어 셋팅
-
 app.get('/', (req: Request, res: Response) => {
 	res.send('Hello World! 배포 성공');
 });
