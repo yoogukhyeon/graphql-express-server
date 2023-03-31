@@ -1,11 +1,12 @@
 import mysql from 'promise-mysql';
+import 'dotenv/config';
 
 const dbConfig: any = {
-	host: 'localhost',
+	host: process.env.DB_HOST,
 	port: '3306',
-	user: 'root',
-	password: 'dkswoah589318!!',
-	database: 'study',
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_DATABASE,
 };
 
 export default mysql.createPool(dbConfig);

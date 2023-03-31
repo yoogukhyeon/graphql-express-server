@@ -20,6 +20,7 @@ const pool = {
 			result = value ? await connection.query(query, value) : (await connection.query(query)) || null;
 		} catch (err) {
 			console.log(err);
+			console.log('db is not connected');
 			connection.rollback(() => {});
 		} finally {
 			connection.release();

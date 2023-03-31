@@ -16,6 +16,7 @@ const pool = {
         }
         catch (err) {
             console.log(err);
+            console.log('db is not connected');
             connection.rollback(() => { });
         }
         finally {

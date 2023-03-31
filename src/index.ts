@@ -4,6 +4,7 @@ import { bodyParserGraphQL } from 'body-parser-graphql';
 import compression from 'compression';
 import typeDefs from './graphql/schema/schema';
 import resolvers from './graphql/resolvers/resolvers';
+import 'dotenv/config';
 
 const app = express();
 

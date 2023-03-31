@@ -9,6 +9,7 @@ const body_parser_graphql_1 = require("body-parser-graphql");
 const compression_1 = __importDefault(require("compression"));
 const schema_1 = __importDefault(require("./graphql/schema/schema"));
 const resolvers_1 = __importDefault(require("./graphql/resolvers/resolvers"));
+require("dotenv/config");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
