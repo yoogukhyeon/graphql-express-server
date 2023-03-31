@@ -11,6 +11,7 @@ interface QueryOptions {
 const pool = {
 	query: async (query: string, value: Array<QueryOptions>) => {
 		let result: Array<QueryResult> = [];
+
 		const pool = await poolPromise;
 		let connection: any;
 		try {
