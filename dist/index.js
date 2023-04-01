@@ -13,12 +13,12 @@ const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 require("dotenv/config");
 const app = (0, express_1.default)();
-if (process.env.NODE_ENV === 'production') {
-    app.use((0, morgan_1.default)('combined'));
+if (process.env.NODE_ENV === "production") {
+    app.use((0, morgan_1.default)("combined"));
     app.use((0, helmet_1.default)());
 }
 else {
-    app.use((0, morgan_1.default)('dev'));
+    app.use((0, morgan_1.default)("dev"));
 }
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -33,13 +33,13 @@ const serverStart = async () => {
     await server.start();
     server.applyMiddleware({
         app,
-        path: '/graphql',
+        path: "/graphql",
     });
 };
 serverStart();
 // ApolloServer 미들웨어 셋팅
-app.get('/', (req, res) => {
-    res.send('Hello World! 배포 성공');
+app.get("/", (req, res) => {
+    res.send("Hello World! 배포 성공");
 });
 const port = 5000 || process.env.PORT;
 app.listen(port, () => {
