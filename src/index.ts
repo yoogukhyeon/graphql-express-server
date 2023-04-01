@@ -39,7 +39,7 @@ serverStart();
 
 // ApolloServer 미들웨어 셋팅
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World! 배포 성공");
+  res.send("Hello World! 배포 성공 수정 완료?");
 });
 
 const port = 5000 || process.env.PORT;
