@@ -16,7 +16,7 @@ const typeDefs = (0, apollo_server_express_1.gql) `
 	}
 
 	type Mutation {
-		createBoard(title: String!, content: String!): Boolean
+		createBoard(writer: String!, title: String!, content: String!): Boolean
 	}
 `;
 exports.default = typeDefs;

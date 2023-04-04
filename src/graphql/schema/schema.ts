@@ -15,7 +15,7 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
-		createBoard(title: String!, content: String!): Boolean
+		createBoard(writer: String!, title: String!, content: String!): Boolean
 	}
 `;
 
