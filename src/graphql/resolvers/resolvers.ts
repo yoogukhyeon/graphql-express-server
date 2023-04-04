@@ -1,20 +1,21 @@
-import user from '../../models/user';
+import boards from '../../models/boards';
 
 interface Argument {
-	userId: string;
-	userName: string;
+	writer: string;
+	title: string;
+	content: string;
 }
 const resolvers = {
 	Query: {
-		users: async () => {
-			const result = await user.selectAll();
+		boards: async () => {
+			const result = await boards.selectAll();
 			return result ? result : false;
 		},
 	},
 
 	Mutation: {
-		addUser: async (_: any, { userId, userName }: Argument) => {
-			const result = await user.insert(userId, userName);
+		createBoard: async (_: any, { writer, title, content }: Argument) => {
+			const result = await boards.insert(writer, title, content);
 			return result ? true : false;
 		},
 	},

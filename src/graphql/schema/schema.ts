@@ -1,17 +1,21 @@
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
-	type User {
-		userId: String
-		userName: String
+	type Boards {
+		no: Int!
+		title: String!
+		content: String!
+		views: String!
+		likes: String!
+		regDate: String!
 	}
 
 	type Query {
-		users: [User]
+		boards: [Boards]
 	}
 
 	type Mutation {
-		addUser(userId: String!, userName: String!): Boolean
+		createBoard(title: String!, content: String!): Boolean
 	}
 `;
 
