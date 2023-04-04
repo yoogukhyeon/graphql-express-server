@@ -12,8 +12,8 @@ const boards = {
         return result;
     },
     insert: async (writer, title, content) => {
-        const sql = `INSERT INTO ${tableName} (writer, title, content) VALUES (?, ?, ?)`;
-        const result = await pool_1.default.query(sql, [writer, title, content]);
+        const sql = `INSERT INTO ${tableName} (writer, title, content, reg_user, modi_user) VALUES (?, ?, ?, ?, ?)`;
+        const result = await pool_1.default.query(sql, [writer, title, content, writer, writer]);
         return true;
     },
 };
