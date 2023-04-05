@@ -12,14 +12,16 @@ const resolvers_1 = __importDefault(require("./graphql/resolvers/resolvers"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 require("dotenv/config");
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
-if (process.env.NODE_ENV === "production") {
-    app.use((0, morgan_1.default)("combined"));
+if (process.env.NODE_ENV === 'production') {
+    app.use((0, morgan_1.default)('combined'));
     app.use((0, helmet_1.default)());
 }
 else {
-    app.use((0, morgan_1.default)("dev"));
+    app.use((0, morgan_1.default)('dev'));
 }
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, body_parser_graphql_1.bodyParserGraphQL)());
@@ -33,13 +35,13 @@ const serverStart = async () => {
     await server.start();
     server.applyMiddleware({
         app,
-        path: "/graphql",
+        path: '/graphql',
     });
 };
 serverStart();
 // ApolloServer 미들웨어 셋팅
-app.get("/", (req, res) => {
-    res.send("Hello World! 배포 성공 수정 완료?");
+app.get('/', (req, res) => {
+    res.send('Hello World! 배포 성공 수정 완료?');
 });
 const port = 5000 || process.env.PORT;
 app.listen(port, () => {

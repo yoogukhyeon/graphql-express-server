@@ -7,7 +7,7 @@ const pool_1 = __importDefault(require("../config/pool"));
 const tableName = 'boards';
 const boards = {
     selectAll: async () => {
-        const sql = `SELECT * FROM ${tableName}`;
+        const sql = `SELECT * FROM ${tableName} order by no desc`;
         const result = await pool_1.default.query(sql, []);
         return result;
     },

@@ -4,7 +4,7 @@ const tableName = 'boards';
 
 const boards = {
 	selectAll: async () => {
-		const sql = `SELECT * FROM ${tableName}`;
+		const sql = `SELECT * FROM ${tableName} order by no desc`;
 		const result = await pool.query(sql, []);
 		return result;
 	},
